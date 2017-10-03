@@ -1,0 +1,76 @@
+----- DOCKER DOCUMENTATION 2 -----
+
+-- CREAT IMAGE AND PUSH IT TO DUCKERHUB --
+
+Creat new folder(docker), then creat a new file into this folder(Dockerfile).
+
+
+Dockerfile:
+ FROM ubuntu:latest
+
+ MAINTAINER Ayse DILEK <aysedilekk@yahoo.com>
+
+
+~/Desktop/docker $
+
+# sudo docker build .
+# sudo docker images
+# sudo docker tag 5173dd644d6f aysedlk/linux:1.7 (change repository and tag)
+# sudo docker images
+# sudo docker login (before creat an account in DockerHub)
+# sudo docker push aysedlk/linux:1.7
+
+----------------------------------------------------------------
+
+-- CREAT NGINX IMAGE AND PUBLISH A WEBSITE --
+
+# sudo apt-get update
+# sudo apt-get install -y nginx
+
+
+Creat new folder(docker), then creat a new file into this folder(Dockerfile) and create a new html(index.html)
+
+
+Dockerfile:
+ FROM ubuntu:latest
+
+ MAINTAINER Ayse DILEK <aysedilekk@yahoo.com>
+
+ # Paket listelerini download et
+ RUN apt-get update
+
+ # Nginx paketini yükle
+ RUN apt-get install -y nginx
+
+ ADD [ "./index.html", "/var/www/html/" ]
+
+ EXPOSE 80
+
+ ENTRYPOINT nginx -g 'daemon off;'
+
+
+
+index.html
+ <html>
+ <head>
+     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+     <title>Ana Sayfa</title>
+ </head>
+ <body>
+     <div style="text-align: center;"> 
+         <h1>Web Sitemize Hoşgeldiniz</h1>
+         <h2>Nginx ve Docker İşbirliği Sunar</h2>
+     </div>
+ </body>
+ </html>
+
+
+# sudo docker build .
+# sudo docker images
+# sudo docker tag 95d85eac65b0 aysedlk/linux:1.7 (change repository and tag)
+# sudo docker images
+# sudo docker run -p 8080:80 aysedlk/mywebsite:0.1
+
+Look http://localhost:8080
+
+
