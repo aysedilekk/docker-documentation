@@ -1,6 +1,6 @@
 ----- DOCKER DOCUMENTATION 2 -----
 
--- CREAT IMAGE AND PUSH IT TO DUCKERHUB --
+-- CREAT IMAGE AND PUSH IT TO DOCKERHUB --
 
 Creat new folder(docker), then creat a new file into this folder(Dockerfile).
 
