@@ -65,9 +65,7 @@ index.html
  </html>
 
 
-# sudo docker build .
-# sudo docker images
-# sudo docker tag 95d85eac65b0 aysedlk/linux:1.7 (change repository and tag)
+# sudo docker build -t aysedlk/mywebsite:0.1 .
 # sudo docker images
 # sudo docker run -p 8080:80 aysedlk/mywebsite:0.1
 
