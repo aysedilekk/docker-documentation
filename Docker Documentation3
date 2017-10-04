@@ -1,0 +1,82 @@
+----- DOCKER DOCUMENTATION 3 -----
+
+-- Foot Lift a Simple System with Docker Compose --
+
+Creat new folder(docker), then creat a new file into this folder(docker-compose.yml) and also creat a Dockerfile.
+
+
+Dockerfile:
+  FROM ubuntu:latest
+ 
+ MAINTAINER Ayse DILEK <aysedilekk@yahoo.com>
+
+ # Paket listelerini download et
+ RUN apt-get update
+
+ # Nginx paketini yükle
+ RUN apt-get install -y nginx
+
+ EXPOSE 80
+
+ ENTRYPOINT nginx -g 'daemon off;'
+
+
+
+
+docker-compose.yml:
+ version: '2'
+
+ services:
+     company_a_web_server:
+         image: nginx:latest
+         ports:
+             - "8001:80"
+
+     company_b_web_server:
+         image: nginx:latest
+         ports:
+             - "8002:80"
+
+     company_c_web_server:
+         image: nginx:latest
+         ports:
+             - "8003:80"
+
+# sudo docker-compose up
+
+If docker-compose not found;
+
+$ curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose
+$ sudo mv ./docker-compose /usr/bin/docker-compose
+$ sudo chmod +x /usr/bin/docker-compose
+
+# sudo docker-compose ps
+# sudo docker-compose logs
+# sudo docker-compose down
+
+
+-- Docker Compose CLI --
+
+# sudo docker-compose build (different from "up", if there ara some changes,use "build",then again use "up")
+
+# sudo docker-compose up -d
+# sudo docker-compose run
+# sudo docker-compose start ......
+# sudo docker-compose stop ......
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
